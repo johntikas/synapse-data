@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  python:
+    build: 
+      context: docker/
+      dockerfile: python.Dockerfile
+    env_file:
+      - synapse.env
+    environment:
+      - FLASK_APP=app
+    command: 
+      flask run
+    volumes:
+      - .:/synapse
+    ports:
+      - "5000:5000"
+
+  rocker:
+    build: 
+      context: docker/
+      dockerfile: r.Dockerfile
+    env_file:
+      - synapse.env
+    environment:
+      - DISABLE_AUTH=true
+    volumes:
+      - .:/home/rstudio
+    ports:
+      - "8787:8787"
