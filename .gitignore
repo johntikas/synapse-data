@@ -1,3 +1,7 @@
+# Temporary files
+.local
+.config
+
 # History files
 .Rhistory
 .Rapp.history
